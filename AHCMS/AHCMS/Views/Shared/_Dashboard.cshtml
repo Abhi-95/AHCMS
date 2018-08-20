@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1,  maximum-scale=1">
+    <title>@ViewBag.Title</title>
+    <link href="~/asset/css/styles.css" rel="stylesheet" media="screen">
+    <link rel="shortcut icon" type="image/ico" href="img/favicon.ico" />
+</head>
+<body>
+    <div id="layout">
+        <header>
+            <div class="container">
+                <div class="row">
+                    <!--Logo-->
+                    <div class="logo">
+                        <a href="appointments-reserved.html"><img src="~/asset/img/logo.png" alt="logo"></a>
+                    </div>
+                    <!--Logo-->
+                    <!--Header tools-->
+                    <div class="tools-top">
+                        <!--Avatar-->
+                        <div class="avatar-profile">
+                            <div class="user-edit">
+                                <h4>Jeniffer Martinez</h4>
+                            </div>
+                            <div class="avatar-image">
+                                <img src="~/asset/img/avatar-profile.jpg" alt="avatar profile" class="img-responsive">
+                                <a href="appointments-reserved.html" title="2 Notifications Pending">
+                                    <span class="notifications">2</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!--Avatar-->
+                        <ul class="tools-help">
+                            <li><a href="help.html" title="Help" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-question-circle"></i></a></li>
+                            <li><a href="login.html" title="Logout" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-sign-out"></i></a></li>
+                        </ul>
+                    </div>
+                    <!--Header tools-->
+                </div>
+            </div>
+        </header>
+
+        <!--Menu-->
+        <nav>
+            <div class="container">
+                <h4 class="navbar-brand">menu</h4>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"> <i class="fa fa-list-alt"></i> <a href="appointments-reserved.html"> appointments reserved</a> </li>
+                        <li> <i class="fa fa-address-book-o"></i> <a href="booked-calendar.html"> book appointment</a> </li>
+                        <li> <i class="fa fa-file-text-o"></i> <a href="authorizations.html">Pending authorizations</a> </li>
+                        <li> <i class="fa fa-files-o"></i> <a href="examinations.html">Result Examinations</a> </li>
+                        <li> <i class="fa fa-pencil"></i> <a href="my-account.html">my account</a> </li>
+                    </ul>                   
+                </div>
+            </div>
+        </nav>
+
+        <!--Menu-->
+
+        <section class="container">
+            @RenderBody()
+        </section>
+       
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="emergency-number">
+                        <p class="phone">(+91) 0265 263 8389</p>
+                        <h5><i class="fa fa-phone-square"></i> emergency contact</h5>
+                    </div>
+                    <div class="emergency-number email">
+                        <p>support@sarabhai.com</p>
+                        <h5>online consultation <i class="fa fa-medkit"></i></h5>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--Copyrights-->
+        <div class="copyrights">
+            <!--Meet Social-->
+            <div class="meet-social">
+                <span><a href="https://www.facebook.com/IwThemesTF" target="_blank"><i class="fa fa-facebook-square"></i></a></span>
+                <span><a href="https://twitter.com/iwthemes" target="_blank"><i class="fa fa-twitter-square"></i></a></span>
+                <span><a href="https://www.youtube.com/channel/UCEb3nAep6tYiAkZpqi0Kzew" target="_blank"><i class="fa fa-youtube-square"></i></a></span>
+                <span><a href="#"><i class="fa fa-linkedin-square"></i></a></span>
+            </div>
+            <!--Meet Social-->
+            <p>&copy; 2018 - SARABHAI AYURVEDIC HOSPITAL. All Rights Reserved.<br /> <a href="privacy-policy.html">Privacy Policy</a></p>
+        </div>
+    </div>
+    <!--Copyrights-->
+    <!-- ======================= JQuery libs =========================== -->
+    <!-- jQuery local-->
+    <script type="text/javascript" src="~/asset/js/jquery.js"></script>
+    <script type="text/javascript" src="~/asset/js/jquery-ui.min.js"></script>
+    <!-- Bootstrap.js-->
+    <script type="text/javascript" src="~/asset/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/asset/js/bootstrap-sprockets.js"></script>
+    <!-- Main Functions-->
+    <script type="text/javascript" src="~/asset/js/main.js"></script>
+</body>
+<!-- Mirrored from html.iwthemes.com/mas/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 May 2018 06:15:23 GMT -->
+</html>
+
