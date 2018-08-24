@@ -34,16 +34,16 @@ namespace AHCMS.DAL.Repository
             }
         }
 
-        //public string ChangePassword(string ID, string password, string role)
-        //{
-        //    string i;
-        //    using (context = new AHCMSEntities())
-        //    {
-        //        i = context.ChangePassword(ID, password, role).FirstOrDefault();
-        //        context.SaveChanges();
-        //    }
-        //    return i;
-        //}
+        public int? ChangePassword(string id, string username, string email, string password, int source)
+        {
+            int? i;
+            using (context = new AHCMSEntities())
+            {
+                i = context.ResetPassword(id,username,email,password,source).FirstOrDefault();
+                context.SaveChanges();
+            }
+            return i;
+        }
 
         //public ForgotPassword_Result ForgotPassword(string username, string password, string role)
         //{

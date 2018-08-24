@@ -265,7 +265,7 @@ namespace AHCMS.CORE
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_Role", roleParameter);
         }
     
-        public virtual ObjectResult<Nullable<bool>> ResetPassword(string id, string username, string email, string password, Nullable<int> source)
+        public virtual ObjectResult<Nullable<int>> ResetPassword(string id, string username, string email, string password, Nullable<int> source)
         {
             var idParameter = id != null ?
                 new ObjectParameter("id", id) :
@@ -287,7 +287,7 @@ namespace AHCMS.CORE
                 new ObjectParameter("source", source) :
                 new ObjectParameter("source", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("ResetPassword", idParameter, usernameParameter, emailParameter, passwordParameter, sourceParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ResetPassword", idParameter, usernameParameter, emailParameter, passwordParameter, sourceParameter);
         }
     
         public virtual ObjectResult<ValidateUser_Result> ValidateUser(string username, string password, string role, Nullable<int> source)

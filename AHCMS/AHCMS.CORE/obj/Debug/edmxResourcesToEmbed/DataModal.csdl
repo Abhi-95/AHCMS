@@ -195,7 +195,7 @@
     <FunctionImport Name="Insert_Role">
       <Parameter Name="Role" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="ResetPassword" ReturnType="Collection(Boolean)">
+    <FunctionImport Name="ResetPassword" ReturnType="Collection(Int32)">
       <Parameter Name="id" Mode="In" Type="String" />
       <Parameter Name="username" Mode="In" Type="String" />
       <Parameter Name="email" Mode="In" Type="String" />
