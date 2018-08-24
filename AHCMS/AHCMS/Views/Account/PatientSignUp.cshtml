@@ -1,0 +1,195 @@
+﻿
+@{
+    ViewBag.Title = "PatientSignUp";
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+
+
+<div class="login">
+    <div class="container">
+        <div class="register-form">
+            <!--Data form-->
+            <div class="data-form">
+                <span class="back-to-login">
+                    <a class="btn btn-green btn-xsmall" href="login.html"><i class="fa fa-angle-double-left"></i> Back to Login</a>
+                </span>
+                <!--Logo-->
+                <a href="#" class="logo"><img src="~/asset/img/logo-simple.png" alt="logo"></a>
+                <!--Logo-->
+                <!--Form-->
+                <div class="form-login">
+                    <form>
+                        <!--Personal Information-->
+                        <div class="row">
+                            <h3>Personal Information</h3>
+                            <div class="datapos">
+                                <!--first name-->
+                                <div class="icon-data">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <input type="text" placeholder="First Name" tabindex="1">
+                                <!--first name-->
+                                <!--last name-->
+                                <div class="icon-data">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <input type="text" placeholder="Last Name" tabindex="3">
+                                <!--last name-->
+                                <!--phone-->
+                                <div class="icon-data">
+                                    <i class="fa fa-phone"></i>
+                                </div>
+                                <input type="number" placeholder="Your Phone" tabindex="5">
+                                <!--phone-->
+                                <!--gender-->
+                                <div class="icon-data">
+                                    <i class="fa fa-venus-mars"></i>
+                                </div>
+                                <select tabindex="7">
+                                    <option>Select a Gender</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                                <!--gender-->
+                            </div>
+                            <div class="datapos">
+                                <!--Middle name-->
+                                <div class="icon-data">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <input type="text" placeholder="Middle Name" tabindex="2">
+                                <!--Middle name-->
+                                <!--Email-->
+                                <div class="icon-data">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <input type="email" placeholder="Email" tabindex="4">
+                                <!--Email-->
+                                <!--Birhtdate-->
+                                <div class="icon-data">
+                                    <i class="fa fa-calendar-alt"></i>
+                                </div>
+                                <input type="date" placeholder="dd/mm/yyyy" tabindex="6">
+                                <!--Birthdate-->
+                                <!--Bloodgroup-->
+                                <div class="icon-data">
+                                    <i class="fa fa-tint"></i>
+                                </div>
+                                <select tabindex="8">
+                                    <option>Select a Blood Group</option>
+                                    <option>A+</option>
+                                    <option>A-</option>
+                                    <option>AB+</option>
+                                    <option>AB-</option>
+                                    <option>B+</option>
+                                    <option>B-</option>
+                                    <option>O+</option>
+                                    <option>O-</option>
+                                </select>
+
+                                <!--Bloodgroup-->
+                            </div>
+                        </div>
+                        <!--Personal Information-->
+                        <!--Address Information-->
+                        <div class="row">
+                            <h3>Address Information</h3>
+                            <div class="datapos">
+                                <!--street-->
+                                <div class="icon-data">
+                                    <i class="fa fa-road"></i>
+                                </div>
+                                <input type="text" placeholder="Street" tabindex="9">
+                                <!--street-->
+                                <!--city-->
+                                <div class="icon-data">
+                                    <i class="fa fa-street-view"></i>
+                                </div>
+                                <input type="text" placeholder="State" tabindex="11">
+                                <!--city-->
+                                <!--city-->
+                                <div class="icon-data">
+                                    <i class="fa fa-map-marker-alt"></i>
+                                </div>
+                                <input type="text" placeholder="ZipCode" tabindex="13">
+                                <!--city-->
+                            </div>
+                            <div class="datapos">
+                                <!--city-->
+                                <div class="icon-data">
+                                    <i class="fa fa-building"></i>
+                                </div>
+                                <input type="text" placeholder="City" tabindex="10">
+                                <!--city-->
+                                <!--city-->
+                                <div class="icon-data">
+                                    <i class="fa fa-globe-asia"></i>
+                                </div>
+                                <input type="text" placeholder="Country" tabindex="12">
+                                <!--city-->
+                            </div>
+                        </div>
+                        <!--Address Information-->
+                        <!--Data Information-->
+                        <div class="row">
+                            <h3>Data Information</h3>
+                            <div class="datapos">
+                                <!--Last name-->
+                                <div class="icon-data">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <input type="text" placeholder="Username">
+                                <!--Last name-->
+                                <!--number document-->
+                                <div class="icon-data">
+                                    <i class="fa fa-user-circle"></i>
+                                </div>
+                                <input type="password" placeholder="Confirm Password">
+                                <!--number document-->
+                                <!--Avatar Profile-->
+                                <div class="avatar-profile">
+                                    <label>Image Profile</label>
+                                    <input type="file" name="pic" accept="image/*">
+                                </div>
+                                <!--Avatar Profile-->
+                            </div>
+                            <div class="datapos">
+                                <!--Alternative phone-->
+                                <div class="icon-data">
+                                    <i class="fa fa-user-circle"></i>
+                                </div>
+                                <input type="password" placeholder="Password">
+                                <!--Alternative phone-->
+                            </div>
+                        </div>
+                        <!--Data Information-->
+                        @*<div class="row">
+            <h3>terms and conditions</h3>
+            <div class="terms-conditions">
+                <div class="content-terms">
+                    <p>These Website Standard Terms and Conditions written on this webpage shall manage your use of this website. These Terms will be applied fully and affect to your use of this Website. By using this Website, you agreed to accept all terms and conditions written in here. You must not use this Website if you disagree with any of these Website Standard Terms and Conditions.</p>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+                    <p>These Website Standard Terms and Conditions written on this webpage shall manage your use of this website. These Terms will be applied fully and affect to your use of this Website. By using this Website, you agreed to accept all terms and conditions written in here. You must not use this Website if you disagree with any of these Website Standard Terms and Conditions.</p>
+                    <p>Minors or people below 18 years old are not allowed to use this Website.</p>
+                    <ul>
+                        <li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</li>
+                        <li>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</li>
+                        <li>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</li>
+                        <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
+                    </ul>
+                </div>
+                <label>
+                    <input type="checkbox" value="option"> Accept the Terms and Conditions
+                </label>
+            </div>
+        </div>*@
+                        <button class="btn btn-default">Create Account</button>
+                    </form>
+                </div>
+                <!--Form-->
+            </div>
+            <!--Data form-->
+        </div>
+    </div>
+</div>
+<!--Login-->

@@ -1,15 +1,30 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1,  maximum-scale=1">
     <title>@ViewBag.Title</title>
-    <link href="~/asset/css/styles.css" rel="stylesheet" media="screen">
-    <link rel="shortcut icon" type="image/ico" href="img/favicon.ico" />
+    <link href="~/asset/css/menu/styles.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/ico" href="~/favicon.ico" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+
+    <script src="~/asset/js/angular/angular.min.js"></script>
+    <script src="~/asset/js/angular/angular-route.min.js"></script>
+    <script src="~/asset/js/angular/angular-resource.min.js"></script>
+    
+    @RenderSection("scripts", required: false)
 </head>
 <body>
+    <div>
+        <div id="offline" class="alert bg-danger" hidden>
+            you`re offline
+        </div>
+        <div id="online" class="alert bg-success" hidden>
+            you`re online
+        </div>
+    </div>
     <div id="layout">
-        <header>
+        <header class="header-radial">
             <div class="container">
                 <div class="row">
                     <!--Logo-->
@@ -69,22 +84,23 @@
             @RenderBody()
         </section>
        
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="emergency-number">
-                        <p class="phone">(+91) 0265 263 8389</p>
-                        <h5><i class="fa fa-phone-square"></i> emergency contact</h5>
-                    </div>
-                    <div class="emergency-number email">
-                        <p>support@sarabhai.com</p>
-                        <h5>online consultation <i class="fa fa-medkit"></i></h5>
-                    </div>
-                </div>
-            </div>
-        </footer>
+       
         <!--Copyrights-->
         <div class="copyrights">
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="emergency-number">
+                            <p class="phone">(+91) 0265 263 8389</p>
+                            <h5><i class="fa fa-phone-square"></i> emergency contact</h5>
+                        </div>
+                        <div class="emergency-number email">
+                            <p>support@sarabhai.com</p>
+                            <h5>online consultation <i class="fa fa-medkit"></i></h5>
+                        </div>
+                    </div>
+                </div>
+            </footer>
             <!--Meet Social-->
             <div class="meet-social">
                 <span><a href="https://www.facebook.com/IwThemesTF" target="_blank"><i class="fa fa-facebook-square"></i></a></span>
@@ -106,6 +122,32 @@
     <script type="text/javascript" src="~/asset/js/bootstrap-sprockets.js"></script>
     <!-- Main Functions-->
     <script type="text/javascript" src="~/asset/js/main.js"></script>
+
+
+    <script>
+        window.addEventListener('load', function () {
+            var online = document.getElementById("online");
+            var offline = document.getElementById("offline");
+
+            function updateOnlineStatus(event) {
+                var condition = navigator.onLine ? "online" : "offline";
+
+                if (condition == "online") {
+                    offline.hidden = true;
+                    online.hidden = false;
+                }
+                else {
+                    online.hidden = true;
+                    offline.hidden = false;
+                }
+               
+                log.insertAdjacentHTML("beforeend", "Event: " + event.type + "; Status: " + condition);
+            }
+
+            window.addEventListener('online', updateOnlineStatus);
+            window.addEventListener('offline', updateOnlineStatus);
+        });
+    </script>
 </body>
 <!-- Mirrored from html.iwthemes.com/mas/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 May 2018 06:15:23 GMT -->
 </html>

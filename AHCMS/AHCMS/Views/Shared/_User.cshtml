@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1,  maximum-scale=1">
+    <title>@ViewBag.Title</title>
+    <link href="~/asset/css/menu/styles.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/ico" href="~/favicon.ico" />
+    <!--Font awesome-5.2.0-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <script src="~/asset/js/jquery.js"></script>
+    <script src="~/asset/js/bootstrap.min.js"></script>
+    <!--AngularJS-->
+    <script src="~/asset/js/angular/angular.min.js"></script>
+    <script src="~/asset/js/angular/angular-route.min.js"></script>
+    <script src="~/asset/js/angular/angular-resource.min.js"></script>
+    <script src="~/asset/js/angular/angular-animate.min.js"></script>
+    <!--Angular Loader-->
+    <link href="~/asset/component/angular-loader/loading-bar.css" rel="stylesheet" />
+    <script src="~/asset/component/angular-loader/loading-bar.js"></script>
+    @RenderSection("scripts", required: false)
+
+    <script>
+        window.addEventListener('load', function () {
+            var online = document.getElementById("online");
+            var offline = document.getElementById("offline");
+
+            function updateOnlineStatus(event) {
+                var condition = navigator.onLine ? "online" : "offline";
+
+                if (condition == "online") {
+                    offline.hidden = true;
+                    online.hidden = false;
+                }
+                else {
+                    online.hidden = true;
+                    offline.hidden = false;
+                }
+
+                log.insertAdjacentHTML("beforeend", "Event: " + event.type + "; Status: " + condition);
+            }
+
+            window.addEventListener('online', updateOnlineStatus);
+            window.addEventListener('offline', updateOnlineStatus);
+        });
+    </script>
+</head>
+<body class="panel-access">
+    <div>
+        <div id="offline" class="alert bg-danger" hidden>
+            you`re offline
+        </div>
+        <div id="online" class="alert bg-success" hidden>
+            you`re online
+        </div>
+    </div>
+    <div id="layout">
+        <header class="header-radial">
+            <div class="container">
+                <div class="row">
+                    <!--Logo-->
+                    <div class="logo">
+                        <a href="appointments-reserved.html"><img src="~/asset/img/logo.png" alt="logo"></a>
+                    </div>
+                    <!--Logo-->
+                    <!--Header tools-->
+                    <div class="tools-top">
+                        <ul class="tools-help">
+                            <li><a href="help.html" title="Help" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-question-circle"></i></a></li>
+                        </ul>
+                    </div>
+                    <!--Header tools-->
+                </div>
+            </div>
+        </header>
+
+        <section>
+            @RenderBody()
+        </section>
+
+        <!--Copyrights-->
+        <div class="copyrights">
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="emergency-number">
+                            <p class="phone">(+91) 0265 263 8389</p>
+                            <h5><i class="fa fa-phone-square"></i> emergency contact</h5>
+                        </div>
+                        <div class="emergency-number email">
+                            <p>support@sarabhai.com</p>
+                            <h5>online consultation <i class="fa fa-medkit"></i></h5>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!--Meet Social-->
+            <div class="meet-social">
+                <span><a href="https://www.facebook.com/IwThemesTF" target="_blank"><i class="fa facebook-f"></i></a></span>
+                <span><a href="https://twitter.com/iwthemes" target="_blank"><i class="fa twitter"></i></a></span>
+                <span><a href="https://www.youtube.com/channel/UCEb3nAep6tYiAkZpqi0Kzew" target="_blank"><i class="fa youtube"></i></a></span>
+                <span><a href="#"><i class="fa fa-linkedin-square"></i></a></span>
+            </div>
+            <!--Meet Social-->
+            <p>&copy; 2018 - SARABHAI AYURVEDIC HOSPITAL. All Rights Reserved.<br /> <a href="privacy-policy.html">Privacy Policy</a></p>
+        </div>
+    </div>
+    <!--Copyrights-->
+    <!-- ======================= JQuery libs =========================== -->
+
+
+</body>
+</html>
+

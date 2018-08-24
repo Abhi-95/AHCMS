@@ -1,0 +1,67 @@
+﻿@model AHCMS.Models.LoginViewModel
+@{
+    ViewBag.Title = "DoctorProfile";
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+
+@section scripts{
+    <script src="~/Angular/Controller/LoginController.js"></script>
+    <script src="~/Angular/Service/AuthenticationService.js"></script>
+}
+<!--Login-->
+<div class="login" ng-controller="loginController">
+    <div class="container">
+        <div class="login-form">
+            <div class="data-form">
+                <!--Logo-->
+                <div>
+                    <a href="index.html" class="logo"><img src="~/asset/img/logo-simple.png" alt="logo" class="img-responsive"></a>
+                </div>
+                <!--Logo-->
+                <!--Form-->
+                <form class="form-login" method="post" @*action="@Url.Action("PatientLogin", "Account")"*@>
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" value="Patient" id="UserType" name="UserType" />
+                    <input type="hidden" value="Patient" id="Role" name="Role" />
+                    <div class="icon-data">
+                        <i class="fa fa-user-circle"></i>
+                    </div>
+                    <input type="text" placeholder="Email" name="Email" id="Email" ng-model="Email">
+                    <div class="icon-data">
+                        <i class="fa fa-key"></i>
+                    </div>
+                    <input type="password" placeholder="Password" name="Password" id="Password" ng-model="Password">
+                    <input type="submit" class="btn btn-primary" role="button" ng-click="ValidatePatient()" value="Login"/>
+                </form>
+                <!--Form-->
+                <span class="help">
+                    <a href="" ng-click="openModal('#forgot')">Forgot Password?</a>
+                    <a href="register.html" class="help-link">Create a new account</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="forgot" class="modal fade book-an-appointment" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Forgot Password</h4>
+            </div>
+            <div class="modal-body">
+                <p>Enter your email address here</p>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="email" placeholder="Email">
+                    </div>
+                </div>
+
+                <a class="btn btn-green btn-xsmall" href="appointments-reserved.html">confirm</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->

@@ -1,0 +1,15 @@
+E:\Sarabhai\AHCMS\AHCMS\AHCMS.DAL\bin\Debug\AHCMS.DAL.dll.config
+E:\Sarabhai\AHCMS\AHCMS\AHCMS.DAL\bin\Debug\AHCMS.DAL.dll
+E:\Sarabhai\AHCMS\AHCMS\AHCMS.DAL\bin\Debug\AHCMS.DAL.pdb
+E:\Sarabhai\AHCMS\AHCMS\AHCMS.DAL\bin\Debug\AHCMS.CORE.dll
+E:\Sarabhai\AHCMS\AHCMS\AHCMS.DAL\bin\Debug\EntityFramework.dll
+E:\Sarabhai\AHCMS\AHCMS\AHCMS.DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\Sarabhai\AHCMS\AHCMS\AHCMS.DAL\bin\Debug\AHCMS.CORE.pdb
+E:\Sarabhai\AHCMS\AHCMS\AHCMS.DAL\bin\Debug\AHCMS.CORE.dll.config
+E:\Sarabhai\AHCMS\AHCMS\AHCMS.DAL\bin\Debug\EntityFramework.xml
+E:\Sarabhai\AHCMS\AHCMS\AHCMS.DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\Sarabhai\AHCMS\AHCMS\AHCMS.DAL\obj\Debug\AHCMS.DAL.csprojResolveAssemblyReference.cache
+E:\Sarabhai\AHCMS\AHCMS\AHCMS.DAL\obj\Debug\AHCMS.DAL.csproj.CoreCompileInputs.cache
+E:\Sarabhai\AHCMS\AHCMS\AHCMS.DAL\obj\Debug\AHCMS.DAL.csproj.CopyComplete
+E:\Sarabhai\AHCMS\AHCMS\AHCMS.DAL\obj\Debug\AHCMS.DAL.dll
+E:\Sarabhai\AHCMS\AHCMS\AHCMS.DAL\obj\Debug\AHCMS.DAL.pdb

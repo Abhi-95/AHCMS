@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AHCMS.Models;
 
 namespace AHCMS.Controllers
 {
@@ -17,6 +18,8 @@ namespace AHCMS.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
+            ViewBag.Encrypt = new Security().Encrypt("અભિ");
+            ViewBag.Decrypt = new Security().Decrypt(ViewBag.Encrypt);
             return View();
         }
 
