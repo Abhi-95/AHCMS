@@ -72,13 +72,12 @@ namespace AHCMS.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public ActionResult PatientLogin(LoginViewModel model)
-        {            
+        {
             model.Role = "Doctor";
             model.UserType = UserRole.Employee;
             //Authentication 
-            var result = PasswordSignIn(model.Email, model.Password, model.Role , model.UserType);
+            var result = PasswordSignIn(model.Email, model.Password, model.Role, model.UserType);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -102,7 +101,7 @@ namespace AHCMS.Controllers
                     return View(model);
             }
         }
-        
+
 
         public virtual SignInStatus PasswordSignIn(string Email, string Password, string Role, UserRole userType)
         {
@@ -146,8 +145,61 @@ namespace AHCMS.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public int PatientRegister(AccountLoginModel model)
+        {
+            Patient p = new Patient();
+            p.PatientID = new ViewModal().GenerateGuidCode();
+            p.UserName = model.Username;
+            p.Password = model.Password;
+            p.FirstName = model.FirstName;
+            p.MiddleName = model.MiddleName;
+            p.LastName = model.LastName;
+            p.Email = model.Email;
+            p.PhoneNumber = model.PhoneNumber;
+            p.Street = model.Street;
+            p.City = model.City;
+            p.State = model.State;
+            p.Country = model.Country;
+            p.ZipCode = model.ZipCode;
+            p.BirthDate = model.BirthDate;
+            p.BloodGroup = model.BloodGroup;
+            p.Gender = model.Gender;
+
+            int status = new Authentication().PatientRegistration(p);
+            return status;
+        }
+
+        [HttpPost]
+        public ActionResult EmployeeSignUp(AccountLoginModel model, string role)
+        {
+            Employee p = new Employee();
+            p.EmployeeID = model.ID;
+            p.ReffNo = model.ReffNo;
+            p.UserName = model.Username;
+            p.Password = model.Password;
+            p.FirstName = model.FirstName;
+            p.MiddleName = model.MiddleName;
+            p.LastName = model.LastName;
+            p.Email = model.Email;
+            p.PhoneNumber = model.PhoneNumber;
+            p.Street = model.Street;
+            p.City = model.City;
+            p.State = model.State;
+            p.Country = model.Country;
+            p.ZipCode = model.ZipCode;
+            p.BirthDate = model.BirthDate;
+            p.BloodGroup = model.BloodGroup;
+            p.Gender = model.Gender;
+
+            int status = new Authentication().EmployeeRegistration(p, role);
+
+            return Json(status, JsonRequestBehavior.AllowGet);
+        }
         #endregion
-        
+
 
         public ActionResult Dashboard()
         {
@@ -160,15 +212,54 @@ namespace AHCMS.Controllers
             return View();
         }
 
-        //// GET: /account/forgotpassword
-        //[AllowAnonymous]
-        //public ActionResult ForgotPassword()
-        //{
-        //    // We do not want to use any existing identity information
-        //    EnsureLoggedOut();
-        //    return View();
-        //}
-        
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        // POST: /account/forgotpassword
+        [HttpPost]
+        [AllowAnonymous]
+        public int ForgotPassword_Patient(LoginViewModel model)
+        {
+            // We do not want to use any existing identity information
+            EnsureLoggedOut();
+
+            ForgotPassword_Result result = new Authentication().ForgotPassword(model.Username, model.Email, 0);
+
+            if (result.Password == "" && result.FirstName == "")
+            {
+                return 0;
+            }
+            else
+            {
+                string name = result.FirstName + " " + result.LastName;
+                new Notification().ForgotPasswordMail(name, result.Password,model.Email);
+                return 1;
+            }
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public int ForgotPassword_Employee(LoginViewModel model)
+        {
+            // We do not want to use any existing identity information
+            EnsureLoggedOut();
+
+            ForgotPassword_Result result = new Authentication().ForgotPassword(model.Username, model.Email, 1);
+
+            if (result.Password == "" && result.FirstName == "")
+            {
+                return 0;
+            }
+            else
+            {
+                string name = result.FirstName + " " + result.LastName;
+                new Notification().ForgotPasswordMail(name, result.Password, model.Email);
+                return 1;
+            }
+        }
+
         //[HttpPost]
         //public ActionResult ForgotPassword(AccountModel model)
         //{
@@ -180,7 +271,7 @@ namespace AHCMS.Controllers
         //    return View();
         //}
 
-       
+
 
         //[HttpPost]
         //public ActionResult Login(AccountModel model)
@@ -223,16 +314,7 @@ namespace AHCMS.Controllers
         //    return View();
         //}
 
-        //[HttpPost]
-        //public ActionResult Register(AccountModel model)
-        //{
-        //    //bool resp = new SiteuserRepository().CheckPassword(model.Password, model.ConfirmPasswword);
-        //    //if (resp)
-        //    //{
-        //    bool status = new SiteuserRepository().CreateUser(model.Username, model.Password, model.FirstName, model.LastName, model.Emailaddress);
-        //    //}
-        //    return Json(status, JsonRequestBehavior.AllowGet);
-        //}
+
 
 
         //End of Login() - Get Method
@@ -316,7 +398,7 @@ namespace AHCMS.Controllers
         //    return RedirectToLocal();
         //}
 
-       
+
 
         //private void AddErrors(DbEntityValidationException exc)
         //{
@@ -369,11 +451,11 @@ namespace AHCMS.Controllers
             if (!returnUrl.IsNullOrWhiteSpace() && Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
-            } 
+            }
             // If we cannot verify if the url is local to our host we redirect to a default location
             return RedirectToAction("Index", "Home");
-        }       
-        
+        }
+
         #endregion
     }
 }

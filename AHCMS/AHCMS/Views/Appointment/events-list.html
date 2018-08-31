@@ -1,0 +1,18 @@
+<span id="cal-slide-tick" style="display: none"></span>
+<div id="cal-slide-content" class="cal-event-list">
+	<table class="unstyled list-unstyled">
+	<tr>
+		<% _.each(events, function(event) { %>
+		<%= event.class == "event-warning" ?'<td><input type="radio" name="time" value="appointment"/>'<%= event.title %>'</td>': %>
+		<% }) %>
+		</tr>
+		<tr>
+			<% _.each(events, function(event) { %>
+			<%= event.class == "event-info" ?'<td><input type="radio" name="time" value="appointment"/>'<%= event.title %>'</td>': %>
+		<% }) %>
+		</tr>
+	</table>
+	<div>
+		<button>Book Appointment</button>
+	</div>
+</div>

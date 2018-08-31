@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using AHCMS.CORE;
 
 namespace AHCMS.Models
 {
@@ -26,6 +27,8 @@ namespace AHCMS.Models
         public string Role { get; set; }
 
         public UserRole UserType { get; set; }
+
+        public string Username { get; set; }
     }
 
     public class SessionModel
@@ -42,7 +45,7 @@ namespace AHCMS.Models
     public class AccountLoginModel
     {
 
-        public string EmployeeID { get; set; }
+        public string ID { get; set; }
         public string ReffNo { get; set; }
         public string Role { get; set; }       
         public string Username { get; set; }
@@ -56,7 +59,7 @@ namespace AHCMS.Models
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }        
-        public string BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
         public string Street { get; set; }
         public string City { get; set; }
         public string State { get; set; }
@@ -64,6 +67,8 @@ namespace AHCMS.Models
         public string ZipCode { get; set; }
         public string BloodGroup { get; set; }
         public int Gender { get; set; }
+
+       
     }
 
     public class AccountForgotPasswordModel

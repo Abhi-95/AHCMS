@@ -13083,14 +13083,13 @@ input {
 
 /* line 97, ../sass/styles.scss */
 select {
-    border: 1px solid #dedede;
+    border: 1px solid #635e5e;
     border-radius: 0;
     background-color: transparent;
     padding: 10px 20px;
-    background: url(../img/arrowdown.png) no-repeat 91% 53%;
-    -webkit-appearance: none;
+    /*-webkit-appearance: none;
     -moz-appearance: none;
-    appearance: none;
+    appearance: none;*/
     opacity: 0.7;
     margin-bottom: 30px;
     width: 91%;
@@ -13130,7 +13129,7 @@ a {
     -o-transition: 0.3s all ease;
     -ms-transition: 0.3s all ease;
     transition: 0.3s all ease;
-    text-decoration: underline;
+    text-decoration: none;
 }
     /* line 135, ../sass/styles.scss */
     a:focus {
@@ -14374,9 +14373,13 @@ footer .help-people {
         }
     /* line 838, ../sass/styles.scss */
     .elements-aside.gray-color li.color-1, .elements-aside.gray-color li.color-2, .elements-aside.gray-color li.color-3 {
-        background-color: #f4f4f5;
+        background-color: #ff454b;
         background-image: none;
     }
+
+.color-4 {
+    background-color: #ff454b;
+}
     /* line 842, ../sass/styles.scss */
     .elements-aside.gray-color li i {
         font-size: 42px;
@@ -14405,10 +14408,6 @@ footer .help-people {
 
 /* line 853, ../sass/styles.scss */
 .search-appointment {
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
     position: relative;
     min-height: 1px;
     padding-left: 15px;
@@ -14469,7 +14468,7 @@ footer .help-people {
 /* line 873, ../sass/styles.scss */
 .search-appointment .know-doctors {
     position: absolute;
-    bottom: 0;
+    bottom: -30px;
     right: 15px;
 }
 
@@ -14482,19 +14481,6 @@ footer .help-people {
     min-height: 1px;
     padding-left: 15px;
     padding-right: 15px;
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    position: relative;
     margin-top: 60px;
 }
 
@@ -14768,7 +14754,7 @@ footer .help-people {
         font-size: 25px;
         color: #0077b0;
         margin-top: 10px;
-        opacity: 0.8;
+        opacity: 0.9;
         line-height: 35px;
     }
     /* line 1088, ../sass/styles.scss */
@@ -15268,7 +15254,7 @@ footer .help-people {
 header.header {
     background-color: #3065b5;
     min-height: 800px;
-    background-image: url(../img/web/doc2.jpg);
+    background: url(../../img/web/doc2.jpg) no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -15280,20 +15266,9 @@ header.header {
         float: left;
         width: 66.66667%;
         min-height: 1px;
-        padding-left: 15px;
+        padding-left: 45px;
         padding-right: 15px;
-        position: relative;
-        min-height: 1px;
-        padding-left: 15px;
-        padding-right: 15px;
-        position: relative;
-        min-height: 1px;
-        padding-left: 15px;
-        padding-right: 15px;
-        position: relative;
-        min-height: 1px;
-        padding-left: 15px;
-        padding-right: 15px;
+        position: relative;        
     }
 
 @media (min-width: 768px) {
@@ -15322,30 +15297,19 @@ header.header {
 /* line 1365, ../sass/styles.scss */
 header.header .menu-nav {
     position: relative;
-    float: left;
+    float: right;
     width: 100%;
     min-height: 1px;
     padding-left: 15px;
     padding-right: 15px;
     position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
     text-align: center;
 }
 
 @media (min-width: 768px) {
     /* line 1365, ../sass/styles.scss */
     header.header .menu-nav {
-        float: left;
+        float: right;
         width: 100%;
     }
 }
@@ -15353,7 +15317,7 @@ header.header .menu-nav {
 @media (min-width: 992px) {
     /* line 1365, ../sass/styles.scss */
     header.header .menu-nav {
-        float: left;
+        float: right;
         width: 100%;
     }
 }
@@ -15361,8 +15325,8 @@ header.header .menu-nav {
 @media (min-width: 1200px) {
     /* line 1365, ../sass/styles.scss */
     header.header .menu-nav {
-        float: left;
-        width: 50%;
+        float: right;
+        width: 70%;
     }
 }
 /* line 1371, ../sass/styles.scss */
@@ -15401,18 +15365,7 @@ header.header .meet-social {
     min-height: 1px;
     padding-left: 15px;
     padding-right: 15px;
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
+    position: relative;    
 }
 
 @media (min-width: 768px) {
@@ -15542,6 +15495,10 @@ header.header .hero-msj {
 /* line 1456, ../sass/styles.scss */
 .services-app img {
     margin: 0 auto;
+}
+
+.services-app a {
+   text-decoration-line:none;
 }
 
 /* line 1460, ../sass/styles.scss */

@@ -1,11 +1,14 @@
-﻿
+﻿@model AHCMS.Models.AccountLoginModel
 @{
-    ViewBag.Title = "PatientSignUp";
+    ViewBag.Title = "Patient SignUp";
     Layout = "~/Views/Shared/_User.cshtml";
 }
 
-
-<div class="login">
+@section scripts{
+    <script src="~/Angular/Controller/LoginController.js"></script>
+    <script src="~/Angular/Service/AuthenticationService.js"></script>
+}
+<div class="login" ng-controller="loginController">
     <div class="container">
         <div class="register-form">
             <!--Data form-->
@@ -18,7 +21,8 @@
                 <!--Logo-->
                 <!--Form-->
                 <div class="form-login">
-                    <form>
+                    <form method="post">
+                     
                         <!--Personal Information-->
                         <div class="row">
                             <h3>Personal Information</h3>
@@ -27,25 +31,25 @@
                                 <div class="icon-data">
                                     <i class="fa fa-user"></i>
                                 </div>
-                                <input type="text" placeholder="First Name" tabindex="1">
+                                <input type="text" placeholder="First Name" tabindex="1" id="FirstName" name="FirstName" ng-model="FirstName">
                                 <!--first name-->
                                 <!--last name-->
                                 <div class="icon-data">
                                     <i class="fa fa-user"></i>
                                 </div>
-                                <input type="text" placeholder="Last Name" tabindex="3">
+                                <input type="text" placeholder="Last Name" tabindex="3" id="LastName" name="LastName" ng-model="LastName">
                                 <!--last name-->
                                 <!--phone-->
                                 <div class="icon-data">
                                     <i class="fa fa-phone"></i>
                                 </div>
-                                <input type="number" placeholder="Your Phone" tabindex="5">
+                                <input type="number" placeholder="Your Phone" tabindex="5" id="PhoneNumber" name="PhoneNumber" ng-model="PhoneNumber">
                                 <!--phone-->
                                 <!--gender-->
                                 <div class="icon-data">
                                     <i class="fa fa-venus-mars"></i>
                                 </div>
-                                <select tabindex="7">
+                                <select tabindex="7" id="Gender" name="Gender" ng-model="Gender">
                                     <option>Select a Gender</option>
                                     <option>Male</option>
                                     <option>Female</option>
@@ -57,25 +61,25 @@
                                 <div class="icon-data">
                                     <i class="fa fa-user"></i>
                                 </div>
-                                <input type="text" placeholder="Middle Name" tabindex="2">
+                                <input type="text" placeholder="Middle Name" tabindex="2" id="MiddleName" name="MiddleName" ng-model="MiddleName">
                                 <!--Middle name-->
                                 <!--Email-->
                                 <div class="icon-data">
                                     <i class="fa fa-envelope"></i>
                                 </div>
-                                <input type="email" placeholder="Email" tabindex="4">
+                                <input type="email" placeholder="Email" tabindex="4" id="Email" name="Email" ng-model="Email">
                                 <!--Email-->
                                 <!--Birhtdate-->
                                 <div class="icon-data">
                                     <i class="fa fa-calendar-alt"></i>
                                 </div>
-                                <input type="date" placeholder="dd/mm/yyyy" tabindex="6">
+                                <input type="date" placeholder="dd/mm/yyyy" tabindex="6" id="BirthDate" name="BirthDate" ng-model="BirthDate">
                                 <!--Birthdate-->
                                 <!--Bloodgroup-->
                                 <div class="icon-data">
                                     <i class="fa fa-tint"></i>
                                 </div>
-                                <select tabindex="8">
+                                <select tabindex="8" id="BloodGroup" name="BloodGroup" ng-model="BloodGroup">
                                     <option>Select a Blood Group</option>
                                     <option>A+</option>
                                     <option>A-</option>
@@ -99,34 +103,34 @@
                                 <div class="icon-data">
                                     <i class="fa fa-road"></i>
                                 </div>
-                                <input type="text" placeholder="Street" tabindex="9">
+                                <input type="text" placeholder="Street" tabindex="9" id="Street" name="Street" ng-model="Street">
                                 <!--street-->
-                                <!--city-->
+                                <!--State-->
                                 <div class="icon-data">
                                     <i class="fa fa-street-view"></i>
                                 </div>
-                                <input type="text" placeholder="State" tabindex="11">
-                                <!--city-->
-                                <!--city-->
+                                <input type="text" placeholder="State" tabindex="11" id="State" name="State" ng-model="State">
+                                <!--State-->
+                                <!--ZipCode-->
                                 <div class="icon-data">
                                     <i class="fa fa-map-marker-alt"></i>
                                 </div>
-                                <input type="text" placeholder="ZipCode" tabindex="13">
-                                <!--city-->
+                                <input type="text" placeholder="ZipCode" tabindex="13" id="ZipCode" name="ZipCode" ng-model="ZipCode">
+                                <!--ZipCode-->
                             </div>
                             <div class="datapos">
                                 <!--city-->
                                 <div class="icon-data">
                                     <i class="fa fa-building"></i>
                                 </div>
-                                <input type="text" placeholder="City" tabindex="10">
+                                <input type="text" placeholder="City" tabindex="10" id="City" name="City" ng-model="City">
                                 <!--city-->
-                                <!--city-->
+                                <!--Country-->
                                 <div class="icon-data">
                                     <i class="fa fa-globe-asia"></i>
                                 </div>
-                                <input type="text" placeholder="Country" tabindex="12">
-                                <!--city-->
+                                <input type="text" placeholder="Country" tabindex="12" id="Country" name="Country" ng-model="Country">
+                                <!--Country-->
                             </div>
                         </div>
                         <!--Address Information-->
@@ -134,56 +138,29 @@
                         <div class="row">
                             <h3>Data Information</h3>
                             <div class="datapos">
-                                <!--Last name-->
+                                <!--Username-->
                                 <div class="icon-data">
                                     <i class="fa fa-user"></i>
                                 </div>
-                                <input type="text" placeholder="Username">
-                                <!--Last name-->
-                                <!--number document-->
+                                <input type="text" placeholder="Username" id="Username" name="Username" ng-model="Username">
+                                <!--Username-->
+                                <!--Confirm Password-->
                                 <div class="icon-data">
                                     <i class="fa fa-user-circle"></i>
                                 </div>
                                 <input type="password" placeholder="Confirm Password">
-                                <!--number document-->
-                                <!--Avatar Profile-->
-                                <div class="avatar-profile">
-                                    <label>Image Profile</label>
-                                    <input type="file" name="pic" accept="image/*">
-                                </div>
-                                <!--Avatar Profile-->
+                                <!--Confirm Password-->
                             </div>
                             <div class="datapos">
-                                <!--Alternative phone-->
+                                <!--Password-->
                                 <div class="icon-data">
                                     <i class="fa fa-user-circle"></i>
                                 </div>
-                                <input type="password" placeholder="Password">
-                                <!--Alternative phone-->
+                                <input type="password" placeholder="Password" id="Password" name="Password" ng-model="Password">
+                                <!--Password-->
                             </div>
-                        </div>
-                        <!--Data Information-->
-                        @*<div class="row">
-            <h3>terms and conditions</h3>
-            <div class="terms-conditions">
-                <div class="content-terms">
-                    <p>These Website Standard Terms and Conditions written on this webpage shall manage your use of this website. These Terms will be applied fully and affect to your use of this Website. By using this Website, you agreed to accept all terms and conditions written in here. You must not use this Website if you disagree with any of these Website Standard Terms and Conditions.</p>
-                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-                    <p>These Website Standard Terms and Conditions written on this webpage shall manage your use of this website. These Terms will be applied fully and affect to your use of this Website. By using this Website, you agreed to accept all terms and conditions written in here. You must not use this Website if you disagree with any of these Website Standard Terms and Conditions.</p>
-                    <p>Minors or people below 18 years old are not allowed to use this Website.</p>
-                    <ul>
-                        <li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</li>
-                        <li>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</li>
-                        <li>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</li>
-                        <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
-                    </ul>
-                </div>
-                <label>
-                    <input type="checkbox" value="option"> Accept the Terms and Conditions
-                </label>
-            </div>
-        </div>*@
-                        <button class="btn btn-default">Create Account</button>
+                        </div>                        
+                        <button type="submit" class="btn btn-success" ng-click="AddPatient()">Create Account</button>
                     </form>
                 </div>
                 <!--Form-->
@@ -193,3 +170,5 @@
     </div>
 </div>
 <!--Login-->
+
+

@@ -1,6 +1,7 @@
-﻿app.service("AuthenticationService", function ($http) {
+﻿app.service("appService", function ($http, $window) {
     // Validating patient
-    this.ValidatePatient = function (user,url) {
+    this.ValidateUser = function (user, url) {
+        debugger
         var response = $http({
             method: "post",
             url: url,
@@ -10,8 +11,8 @@
         return response;
     };
 
-    //Add new Patient
-    this.AddUser = function (user,url) {
+    //Add or Edit Data
+    this.ProcessData = function (user,url) {
         var response = $http({
             method: "post",
             url: url,
@@ -20,57 +21,31 @@
         });
         return response;
     }
-    //
-    //get All Books
-    this.getBooks = function () {
-        return $http.get("/Home/GetBook");
+    
+    //get All Data
+    this.getData = function (url) {
+        return $http.get(url);
     };
 
-    // get Book by bookId
-    this.getBook = function (bookId) {
+    // get or delete Data by Id
+    this.getOrDeleteData = function (Id, url) {
         debugger
         var response = $http({
             method: "post",
-            url: "/Home/GetBookByID",
+            url: url,
             params: {
-                id: JSON.stringify(bookId)
+                id: JSON.stringify(Id)
             }
         });
         return response;
-    }
+    };
 
-    //Delete Book
-    this.DeleteBook = function (bookId) {
-        debugger
-        var response = $http({
-            method: "post",
-            url: "/Home/DeleteBook",
-            params: {
-                id: JSON.stringify(bookId)
-            }
-        });
-        return response;
-    }
+    this.RedirectToURL = function (url) {
+        var host = $window.location.host;
+        var landingUrl = "http://" + host + url;
 
-    //Add Book
-    this.AddBook = function (book) {
-        var response = $http({
-            method: "post",
-            url: "/Home/AddBook",
-            data: JSON.stringify(book),
-            dataType: "json"
-        });
-        return response;
-    }
+        $window.location.href = landingUrl; //Redirect to given URLs.
+    };
 
-    //Update Book
-    this.editBook = function (book) {
-        var response = $http({
-            method: "post",
-            url: "/Home/UpdateBook",
-            data: JSON.stringify(book),
-            dataType: "json"
-        });
-        return response;
-    }
+
 });

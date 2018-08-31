@@ -133,7 +133,15 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="Delete_Role" FunctionName="AHCMSModel.Store.Delete_Role" />
-    <FunctionImportMapping FunctionImportName="ForgotPassword" FunctionName="AHCMSModel.Store.ForgotPassword" />
+    <FunctionImportMapping FunctionImportName="ForgotPassword" FunctionName="AHCMSModel.Store.ForgotPassword">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AHCMSModel.ForgotPassword_Result">
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Get_EmployeeByRole" FunctionName="AHCMSModel.Store.Get_EmployeeByRole">
       <ResultMapping>
         <ComplexTypeMapping TypeName="AHCMSModel.Get_EmployeeByRole_Result">
@@ -218,6 +226,15 @@
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="Img" ColumnName="Img" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetForgotPassword_Patient" FunctionName="AHCMSModel.Store.GetForgotPassword_Patient">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AHCMSModel.GetForgotPassword_Patient_Result">
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

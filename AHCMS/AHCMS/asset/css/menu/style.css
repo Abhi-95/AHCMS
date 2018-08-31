@@ -491,3 +491,17 @@
 	text-indent: 60px;
 }
 }
+
+/*Loader*/
+.loading-icon {
+    background: url(../../img/web/Preloader_3.gif) center no-repeat #fff;
+    display: inline-block;
+    font-size: 0;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999999999999999999 !important;
+    opacity: .10
+}

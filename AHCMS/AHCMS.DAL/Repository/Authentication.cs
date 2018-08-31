@@ -45,13 +45,13 @@ namespace AHCMS.DAL.Repository
             return i;
         }
 
-        //public ForgotPassword_Result ForgotPassword(string username, string password, string role)
-        //{
-        //    using (context = new AHCMSEntities())
-        //    {
-        //        return context.ForgotPassword(username, password, role).FirstOrDefault();
-        //    }
-        //}
+        public ForgotPassword_Result ForgotPassword(string username, string email, int source)
+        {
+            using (context = new AHCMSEntities())
+            {
+                return context.ForgotPassword(username,email,source).FirstOrDefault();
+            }
+        }
 
         //public Byte[] ProfileImage(string id, string role)
         //{

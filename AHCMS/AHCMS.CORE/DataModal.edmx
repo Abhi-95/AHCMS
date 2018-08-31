@@ -128,12 +128,22 @@
           <Property Name="UserId" Type="nvarchar" MaxLength="128" />
           <Property Name="SpecializationId" Type="nvarchar" MaxLength="128" />
         </EntityType>
+        <Function Name="BookAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="DoctorID" Type="nvarchar" Mode="In" />
+          <Parameter Name="PatientID" Type="nvarchar" Mode="In" />
+          <Parameter Name="Date" Type="date" Mode="In" />
+          <Parameter Name="Slot" Type="tinyint" Mode="In" />
+          <Parameter Name="Token" Type="tinyint" Mode="In" />
+          <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="Delete_Role" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="ForgotPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="username" Type="nvarchar" Mode="In" />
           <Parameter Name="email" Type="nvarchar" Mode="In" />
+          <Parameter Name="source" Type="int" Mode="In" />
         </Function>
         <Function Name="Get_EmployeeByRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Role" Type="nvarchar" Mode="In" />
@@ -141,6 +151,9 @@
         <Function Name="Get_Patient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Get_Roles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetForgotPassword_Patient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="reffno" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="GetRoleUserExistence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
@@ -353,9 +366,10 @@
           <FunctionImport Name="Delete_Role">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="ForgotPassword" ReturnType="Collection(Boolean)">
+          <FunctionImport Name="ForgotPassword" ReturnType="Collection(AHCMSModel.ForgotPassword_Result)">
             <Parameter Name="username" Mode="In" Type="String" />
             <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="source" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Get_EmployeeByRole" ReturnType="Collection(AHCMSModel.Get_EmployeeByRole_Result)">
           <Parameter Name="Role" Mode="In" Type="String" />
@@ -426,6 +440,18 @@
             <Parameter Name="role" Mode="In" Type="String" />
             <Parameter Name="source" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="GetForgotPassword_Patient" ReturnType="Collection(AHCMSModel.GetForgotPassword_Patient_Result)">
+          <Parameter Name="reffno" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BookAppointment" ReturnType="Collection(Int32)">
+            <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="DoctorID" Mode="In" Type="String" />
+            <Parameter Name="PatientID" Mode="In" Type="String" />
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Slot" Mode="In" Type="Byte" />
+            <Parameter Name="Token" Mode="In" Type="Byte" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Get_EmployeeByRole_Result">
           <Property Type="String" Name="EmployeeID" Nullable="false" MaxLength="128" />
@@ -492,6 +518,16 @@
           <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Img" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetForgotPassword_Patient_Result">
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ForgotPassword_Result">
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -631,7 +667,15 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="Delete_Role" FunctionName="AHCMSModel.Store.Delete_Role" />
-          <FunctionImportMapping FunctionImportName="ForgotPassword" FunctionName="AHCMSModel.Store.ForgotPassword" />
+          <FunctionImportMapping FunctionImportName="ForgotPassword" FunctionName="AHCMSModel.Store.ForgotPassword" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AHCMSModel.ForgotPassword_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Get_EmployeeByRole" FunctionName="AHCMSModel.Store.Get_EmployeeByRole">
             <ResultMapping>
               <ComplexTypeMapping TypeName="AHCMSModel.Get_EmployeeByRole_Result">
@@ -719,6 +763,16 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetForgotPassword_Patient" FunctionName="AHCMSModel.Store.GetForgotPassword_Patient">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AHCMSModel.GetForgotPassword_Patient_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BookAppointment" FunctionName="AHCMSModel.Store.BookAppointment" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -6,20 +6,32 @@
     <title>@ViewBag.Title</title>
     <link href="~/asset/css/menu/styles.css" rel="stylesheet" />
     <link rel="shortcut icon" type="image/ico" href="~/favicon.ico" />
-    <!--Font awesome-5.2.0-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <!--Font awesome-5.3.1-->
+    <link href="~/asset/fonts/fontawesome-5.3.1-web/css/all.css" rel="stylesheet" />
     <script src="~/asset/js/jquery.js"></script>
     <script src="~/asset/js/bootstrap.min.js"></script>
     <!--AngularJS-->
-    <script src="~/asset/js/angular/angular.min.js"></script>
-    <script src="~/asset/js/angular/angular-route.min.js"></script>
-    <script src="~/asset/js/angular/angular-resource.min.js"></script>
+    <script src="~/asset/js/angular/angular.js"></script>
     <script src="~/asset/js/angular/angular-animate.min.js"></script>
-    <!--Angular Loader-->
-    <link href="~/asset/component/angular-loader/loading-bar.css" rel="stylesheet" />
-    <script src="~/asset/component/angular-loader/loading-bar.js"></script>
+    <script src="~/asset/js/angular-ui-router.js"></script>
+    <script src="~/Angular/Controller/app.module.js"></script>
+    <script src="~/Angular/app.config.js"></script>
     @RenderSection("scripts", required: false)
 
+    <style>
+        .loading-icon {
+            background: url(~/asset/img/spinner/loging-spinner.svg) center no-repeat #141212;
+            display: inline-block;
+            font-size: 0;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999999999999999999 !important;
+            opacity: .9;
+        }
+    </style>
     <script>
         window.addEventListener('load', function () {
             var online = document.getElementById("online");
@@ -45,7 +57,10 @@
         });
     </script>
 </head>
-<body class="panel-access">
+<body class="@ViewBag.BodyClass">
+    <!--panel-access-->
+    <http-request-loader></http-request-loader>
+
     <div>
         <div id="offline" class="alert bg-danger" hidden>
             you`re offline
@@ -54,31 +69,31 @@
             you`re online
         </div>
     </div>
+    
     <div id="layout">
-        <header class="header-radial">
-            <div class="container">
-                <div class="row">
-                    <!--Logo-->
-                    <div class="logo">
-                        <a href="appointments-reserved.html"><img src="~/asset/img/logo.png" alt="logo"></a>
+        @*<header class="header-radial">
+                <div class="container">
+                    <div class="row">
+                        <!--Logo-->
+                        <div class="logo">
+                            <img src="~/asset/img/logo-55.png" alt="logo">
+                        </div>
+                        <!--Logo-->
+                        <!--Header tools-->
+                        <div class="tools-top">
+                            <ul class="tools-help">
+                                <li><a href="help.html" title="Help" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-question-circle"></i></a></li>
+                            </ul>
+                        </div>
+                        <!--Header tools-->
                     </div>
-                    <!--Logo-->
-                    <!--Header tools-->
-                    <div class="tools-top">
-                        <ul class="tools-help">
-                            <li><a href="help.html" title="Help" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-question-circle"></i></a></li>
-                        </ul>
-                    </div>
-                    <!--Header tools-->
                 </div>
-            </div>
-        </header>
+            </header>*@
 
         <section>
             @RenderBody()
         </section>
 
-        <!--Copyrights-->
         <div class="copyrights">
             <footer>
                 <div class="container">

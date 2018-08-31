@@ -73,6 +73,12 @@
     <Compile Include="EmployeeRole.cs">
       <DependentUpon>DataModal.tt</DependentUpon>
     </Compile>
+    <Compile Include="ForgotPassword_Result.cs">
+      <DependentUpon>DataModal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetForgotPassword_Patient_Result.cs">
+      <DependentUpon>DataModal.tt</DependentUpon>
+    </Compile>
     <Compile Include="Get_EmployeeByRole_Result.cs">
       <DependentUpon>DataModal.tt</DependentUpon>
     </Compile>

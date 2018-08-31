@@ -9,9 +9,30 @@ using System.Web;
 namespace AHCMS.Models
 {
     public class ViewModal
-    {        
-        
-        
+    {
+        public string GenerateGuidCode()
+        {
+            return Guid.NewGuid().ToString();
+        }
+
+        public string GeneratePassword(string password = "")
+        {
+            //string password;
+            if (password == "")
+            {
+                using (var rng = new RNGCryptoServiceProvider())
+                {
+                    var bit_count = (8 * 6);
+                    var byte_count = ((bit_count + 7) / 8); // rounded up
+                    var bytes = new byte[byte_count];
+                    rng.GetBytes(bytes);
+                    password = Convert.ToBase64String(bytes);
+                }
+            }
+
+            password = new Security().Encrypt(password);
+            return password;
+        }
     }
 
     public enum SignInStatus // Summary: Possible results from a sign in attempt
@@ -22,10 +43,10 @@ namespace AHCMS.Models
         Failure = 3 // Summary: Sign in failed
     }
 
-    public enum UserRole 
+    public enum UserRole
     {
-        Patient = 0,         
-        Employee = 1  
+        Patient = 0,
+        Employee = 1
     }
     public class Security
     {
@@ -113,4 +134,3 @@ namespace AHCMS.Models
     }
 }
 
- 

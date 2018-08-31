@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "BookAppointment";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<div class="main-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Book Appointment</h2>
+                <em>Follow these instructions: Select your prefer specialist after select the clinical department then, the calendar is going to be enable to select your appointment <br> (the avatar doctor is loading while you select the specialist).</em>
+                <hr>
+            </div>
+            <div class="search-appointment">
+                <form class="make-app">
+                    <!--Departments-->
+                    <div class="icon-data">
+                        <i class="fa fa-hospital"></i>
+                    </div>
+                    <select>
+                        <option value="-1" selected>Departments</option>
+                        <option value="1">Health Care</option>
+                        <option value="2">Cardic Clinic</option>
+                        <option value="3">General Surgery</option>
+                        <option value="4">Psychology</option>
+                        <option value="5">Pediatrics</option>
+                    </select>
+                    <!--Departments-->
+                    <!--name-->
+                    <div class="icon-data">
+                        <i class="fa fa-user-md"></i>
+                    </div>
+                    <select>
+                        <option value="-1" selected>Doctors</option>
+                        <option value="1">DR. SMITH</option>
+                        <option value="2">DR. JURADO</option>
+                        <option value="3">DR. RENDON</option>
+                        <option value="4">DR. MARTINEZ</option>
+                        <option value="5">DR. OUSHY</option>
+                    </select>
+
+                    <!--name-->
+                    <!--Date-->
+                    <div class="icon-data">
+                        <i class="fa fa-calendar-alt"></i>
+                    </div>
+                    <input type="date" />
+                    <!--Date-->
+                    <a href="meet-doctors.html" class="know-doctors">don't you know our doctors?</a>
+                    <span class="btn btn-green btn-small btn-search-appointment"><i class="fa fa-search"></i> Check Avability</span><!--Change to Button Attribute-->
+                </form>
+            </div>
+            <div class="preview-appointment">
+                <div class="preview-doctor">
+                    <img src="~/asset/img/doctor-pic-02.jpg" alt="doctor preview">
+                </div>
+                <ul>
+                    <li><h5>Dr. Jurado Jeniffer</h5></li>
+                    <li>Specialization: <span>Cardiothoracic Anesthesia and Anesthesiology - FCI</span></li>
+                </ul>
+            </div>
+        </div>
+        <div style="padding-top:45px;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2> Appointment Availability </h2><hr>
+                </div>
+            </div>
+        </div>
+        <div style="margin:0px;padding-left:50px;">
+            <div class="row">
+
+                <div class="elements-aside solid-color col-sm-10">
+                    <ul>
+                        <li class="color-1">
+                            <h4>Morning Session (10:00 AM - 11:00 AM)</h4>
+                            <p>
+                                Doctor <u style="font-weight:800;">DR. JURADO JENIFFER</u> appoinment available
+                                <button class="btn btn-sucess pull-right" data-toggle="modal" data-target=".modal">BOOK APPOINTMENT</button>
+                            </p>
+                        </li>
+
+                        <li class="color-3">
+                            <h4>Evening Session (04:00 PM - 05:00 PM)</h4>
+                            <p>
+                                Doctor <u style="font-weight:800;">DR. JURADO JENIFFER</u> appoinment available
+                                <button class="btn btn-sucess pull-right" data-toggle="modal" data-target=".modal">BOOK APPOINTMENT</button>
+                            </p>
+                        </li>
+                        <li style="background-color: #ff454b;">
+                            <h4>NO Appointment Available </h4>
+                            <p>Selected Date <u style="font-weight:800;">31-08-18</u>, with <u style="font-weight:800;">DR. JURADO JENIFFER</u> </p>
+                            <p>There is no appointment available, Try another date</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade book-an-appointment" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Book an Appointment</h4>
+            </div>
+            <div class="modal-body">
+                <p>Please review and confirm that you would like to request the following appointment:</p>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h4>
+                            <i class="fa fa-calendar-alt datetime"></i>
+                            August 31, 2018
+                        </h4>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4>
+                            <i class="fa fa-clock datetime"></i>
+                            10:00 AM - 11:00 AM
+                        </h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9">
+                        <h4>
+                            <i class="fa fa-user-md datetime"></i>
+                            Dr. Jurado Jeniffer
+                        </h4>
+                    </div>
+                </div>
+                <hr />
+                <a class="btn btn-green btn-xsmall" href="appointments-reserved.html">confirm</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->

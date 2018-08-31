@@ -1,6 +1,6 @@
-﻿var app = angular.module("app", ['angular-loading-bar']);
-   
-app.controller("loginController", function ($scope, AuthenticationService) {
+﻿var app = angular.module("app", ['ui.router', 'loader']);
+
+app.controller("loginController", function ($scope, appService) {
 
     $scope.openModal = function (id) {
         debugger;
@@ -11,15 +11,59 @@ app.controller("loginController", function ($scope, AuthenticationService) {
     }
 
     $scope.ValidatePatient = function () {
-        debugger;
+        debugger; 
         var user = {
-            Email =$scope.Email,
-            Password = $scope.Password
+            Email: $scope.Email,
+            Password: $scope.Password
         }
 
-        var result = AuthenticationService.ValidatePatient(user, "/Account/PatientLogin");
-        result.then(function (response) {
+        var result = appService.ValidateUser(user, "/Account/PatientLogin");
+        result.then(function (response) {         
             alert("welcome");
+        }, function () {          
+            alert('Error in Validating user');
+        });
+    }
+
+    $scope.ForgotPassword_Patient = function () {
+        debugger;
+
+        var user = {
+            Email: $scope.ForgotEmail,
+            Username: $scope.ForgotUsername
+        }
+     
+        var result = appService.ValidateUser(user, "/Account/ForgotPassword_Patient");
+        result.then(function (response) {
+            if (response.data == 0) {
+                alert('Error in Validating user !');
+            }
+            else {
+                appService.RedirectToURL('/Account/ForgotPassword');
+            }
+        }, function () {
+            alert('Error in Validating user');
+        });
+    }
+
+    $scope.ForgotPassword_Employee = function () {
+        debugger;
+        var user = {
+            Email: $scope.Email,
+            Username: $scope.Username
+        }
+
+        var result = appService.ValidateUser(user, "/Account/ForgotPassword_Employee");
+        result.then(function (response) {
+            if (response.data == 0) {
+                alert('Error in Validating user !');
+            }
+            else {
+                alert("Please check yor mail");
+            }
+
+        }, function () {
+            alert('Error in Validating user');
         });
     }
 
@@ -41,11 +85,18 @@ app.controller("loginController", function ($scope, AuthenticationService) {
             Country: $scope.Country,
             Street: $scope.Street,
             BloodGroup: $scope.BloodGroup,
-            Gender: $scope.Gender
+            Gender: $scope.Gender,
+            ZipCode: $scope.ZipCode
         }
-        var result = AuthenticationService.AddUser(user, "/Home/AddPatient");
+
+        var result = appService.ProcessData(user, "/Account/PatientRegister");
         result.then(function (response) {
-            alert(response.data);
+            if (response.data == 0) {
+                alert('Error in Adding record !');
+            }
+            else {
+                alert('Sucessfully, Adding record');
+            }
         }, function () {
             alert('Error in Adding record');
         });
@@ -72,7 +123,7 @@ app.controller("loginController", function ($scope, AuthenticationService) {
             BloodGroup: $scope.BloodGroup,
             Gender: $scope.Gender
         }
-        var result = AuthenticationService.AddUser(user, "/Home/AddEmployee");
+        var result = appService.ProcessData(user, "/Home/AddEmployee");
         result.then(function (response) {
             alert(response.data);
         }, function () {
@@ -81,3 +132,10 @@ app.controller("loginController", function ($scope, AuthenticationService) {
     }
 
 });
+
+//app.controller('appController', ['$scope', '$rootScope',
+//    function ($scope) {
+//        $rootScope.$on('LOAD', function () { $scope.loading = true });
+//        $rootScope.$on('UNLOAD', function () { $scope.loading = false });        
+//    }
+//]);

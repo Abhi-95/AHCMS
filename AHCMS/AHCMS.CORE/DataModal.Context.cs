@@ -45,7 +45,7 @@ namespace AHCMS.CORE
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Delete_Role", idParameter);
         }
     
-        public virtual ObjectResult<Nullable<bool>> ForgotPassword(string username, string email)
+        public virtual ObjectResult<ForgotPassword_Result> ForgotPassword(string username, string email, Nullable<int> source)
         {
             var usernameParameter = username != null ?
                 new ObjectParameter("username", username) :
@@ -55,7 +55,11 @@ namespace AHCMS.CORE
                 new ObjectParameter("email", email) :
                 new ObjectParameter("email", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("ForgotPassword", usernameParameter, emailParameter);
+            var sourceParameter = source.HasValue ?
+                new ObjectParameter("source", source) :
+                new ObjectParameter("source", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ForgotPassword_Result>("ForgotPassword", usernameParameter, emailParameter, sourceParameter);
         }
     
         public virtual ObjectResult<Get_EmployeeByRole_Result> Get_EmployeeByRole(string role)
@@ -309,6 +313,48 @@ namespace AHCMS.CORE
                 new ObjectParameter("source", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidateUser_Result>("ValidateUser", usernameParameter, passwordParameter, roleParameter, sourceParameter);
+        }
+    
+        public virtual ObjectResult<GetForgotPassword_Patient_Result> GetForgotPassword_Patient(string reffno)
+        {
+            var reffnoParameter = reffno != null ?
+                new ObjectParameter("reffno", reffno) :
+                new ObjectParameter("reffno", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetForgotPassword_Patient_Result>("GetForgotPassword_Patient", reffnoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> BookAppointment(string iD, string doctorID, string patientID, Nullable<System.DateTime> date, Nullable<byte> slot, Nullable<byte> token, string createdBy)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            var doctorIDParameter = doctorID != null ?
+                new ObjectParameter("DoctorID", doctorID) :
+                new ObjectParameter("DoctorID", typeof(string));
+    
+            var patientIDParameter = patientID != null ?
+                new ObjectParameter("PatientID", patientID) :
+                new ObjectParameter("PatientID", typeof(string));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
+    
+            var slotParameter = slot.HasValue ?
+                new ObjectParameter("Slot", slot) :
+                new ObjectParameter("Slot", typeof(byte));
+    
+            var tokenParameter = token.HasValue ?
+                new ObjectParameter("Token", token) :
+                new ObjectParameter("Token", typeof(byte));
+    
+            var createdByParameter = createdBy != null ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("BookAppointment", iDParameter, doctorIDParameter, patientIDParameter, dateParameter, slotParameter, tokenParameter, createdByParameter);
         }
     }
 }

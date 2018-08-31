@@ -135,9 +135,10 @@
     <FunctionImport Name="Delete_Role">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="ForgotPassword" ReturnType="Collection(Boolean)">
+    <FunctionImport Name="ForgotPassword" ReturnType="Collection(AHCMSModel.ForgotPassword_Result)">
       <Parameter Name="username" Mode="In" Type="String" />
       <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="source" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="Get_EmployeeByRole" ReturnType="Collection(AHCMSModel.Get_EmployeeByRole_Result)">
       <Parameter Name="Role" Mode="In" Type="String" />
@@ -208,6 +209,9 @@
       <Parameter Name="role" Mode="In" Type="String" />
       <Parameter Name="source" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="GetForgotPassword_Patient" ReturnType="Collection(AHCMSModel.GetForgotPassword_Patient_Result)">
+      <Parameter Name="reffno" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="Get_EmployeeByRole_Result">
     <Property Type="String" Name="EmployeeID" Nullable="false" MaxLength="128" />
@@ -274,5 +278,15 @@
     <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Img" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetForgotPassword_Patient_Result">
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ForgotPassword_Result">
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="true" />
   </ComplexType>
 </Schema>
